@@ -144,14 +144,14 @@ export default function Header({ activeSection, onNavigate, onOpenConsultation }
             })}
           </nav>
 
-          {/* <div className="flex items-center gap-3">
-            <button
+          <div className="flex items-center gap-3">
+            {/* <button
               onClick={onOpenConsultation}
               className="hidden md:inline-flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-xl bg-[#174C3C] hover:bg-[#205F4D] text-white text-sm font-semibold shadow-md shadow-[#174C3C]/20 hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5 cursor-pointer"
             >
               <Sparkles className="w-4 h-4 text-[#DFCA9B]" />
               <span>Nhận Tư Vấn</span>
-            </button>
+            </button> */}
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -160,7 +160,7 @@ export default function Header({ activeSection, onNavigate, onOpenConsultation }
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
-          </div> */}
+          </div>
         </div>
       </header>
 
