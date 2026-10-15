@@ -98,10 +98,11 @@ export default function Footer({ onNavigate, onOpenConsultation }) {
               </li>
               <li>
                 <button 
-                  onClick={() => onNavigate('services')}
-                  className="hover:text-white transition-colors text-left"
+                  onClick={() => onNavigate('traceability')}
+                  className="hover:text-[#DFCA9B] transition-colors text-left flex items-center gap-1.5"
                 >
-                  Hệ thống tem QR VCheck
+                  <span>Truy xuất sản phẩm (VCheck)</span>
+                  <span className="bg-[#DFCA9B] text-[#174C3C] text-[9px] font-bold px-1 rounded">Live</span>
                 </button>
               </li>
               <li>

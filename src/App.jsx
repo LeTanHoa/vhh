@@ -12,6 +12,7 @@ import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import ConsultationModal from './components/ConsultationModal';
 import QuickContactWidget from './components/QuickContactWidget';
+import ProductTraceabilityPage from './components/ProductTraceabilityPage';
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -20,7 +21,7 @@ export default function App() {
 
   const handleNavigate = (sectionId) => {
     setActiveSection(sectionId);
-    if (sectionId === 'home') {
+    if (sectionId === 'home' || sectionId === 'traceability') {
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
@@ -42,6 +43,7 @@ export default function App() {
     setConsultationModalOpen(true);
   };
 
+
   return (
     <div className="min-h-screen bg-[#F8F7F3] text-[#19241F] flex flex-col selection:bg-[#7BAE82]/30 selection:text-[#174C3C]">
       
@@ -54,51 +56,60 @@ export default function App() {
 
       {/* Main Content Sections */}
       <main className="flex-1">
-        {/* Hero Section */}
-        <div id="home">
-          <Hero
-            onExploreServices={() => handleNavigate('services')}
-            onOpenConsultation={() => handleOpenConsultation()}
+        {activeSection === 'traceability' ? (
+          <ProductTraceabilityPage
+            onBackToHome={() => handleNavigate('home')}
+            onOpenConsultation={(srv) => handleOpenConsultation(srv)}
           />
-        </div>
+        ) : (
+          <>
+            {/* Hero Section */}
+            <div id="home">
+              <Hero
+                onExploreServices={() => handleNavigate('services')}
+                onOpenConsultation={() => handleOpenConsultation()}
+              />
+            </div>
 
-        {/* About Section */}
-        <About
-          onOpenConsultation={() => handleOpenConsultation('Tư vấn tổng quan giải pháp OCOP')}
-        />
+            {/* About Section */}
+            <About
+              onOpenConsultation={() => handleOpenConsultation('Tư vấn tổng quan giải pháp OCOP')}
+            />
 
-        {/* Services Section */}
-        <Services
-          onOpenConsultation={(srv) => handleOpenConsultation(srv)}
-        />
+            {/* Services Section */}
+            <Services
+              onOpenConsultation={(srv) => handleOpenConsultation(srv)}
+            />
 
-        {/* Projects / Portfolio Section */}
-        <Projects
-          onOpenConsultation={(srv) => handleOpenConsultation(srv)}
-        />
+            {/* Projects / Portfolio Section */}
+            <Projects
+              onOpenConsultation={(srv) => handleOpenConsultation(srv)}
+            />
 
-        {/* 5-Step Process Section */}
-        <Process
-          onOpenConsultation={() => handleOpenConsultation('Khởi động dự án')}
-        />
+            {/* 5-Step Process Section */}
+            <Process
+              onOpenConsultation={() => handleOpenConsultation('Khởi động dự án')}
+            />
 
-        {/* Why Choose Us */}
-        <WhyChooseUs
-          onOpenConsultation={() => handleOpenConsultation()}
-        />
+            {/* Why Choose Us */}
+            <WhyChooseUs
+              onOpenConsultation={() => handleOpenConsultation()}
+            />
 
-        {/* Knowledge & Articles Section */}
-        <Knowledge
-          onOpenConsultation={(srv) => handleOpenConsultation(srv)}
-        />
+            {/* Knowledge & Articles Section */}
+            <Knowledge
+              onOpenConsultation={(srv) => handleOpenConsultation(srv)}
+            />
 
-        {/* FAQ Section */}
-        <FAQSection
-          onOpenConsultation={() => handleOpenConsultation()}
-        />
+            {/* FAQ Section */}
+            <FAQSection
+              onOpenConsultation={() => handleOpenConsultation()}
+            />
 
-        {/* Contact & Consultation Form Section */}
-        <ContactSection />
+            {/* Contact & Consultation Form Section */}
+            <ContactSection />
+          </>
+        )}
       </main>
 
       {/* Footer */}
